@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeAI Pro Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo" id="logo-btn">
+                TradeAI Pro
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" id="nav-dashboard" class="nav-item active">📊 Market Overview</a>
+                <a href="#" id="nav-portfolio" class="nav-item">💼 Portfolio (Mock)</a>
+                <a href="#" id="nav-settings" class="nav-item">⚙️ Settings</a>
+            </nav>
+
+            <div class="sidebar-watchlist">
+                <h3>Quick Watchlist</h3>
+                <ul id="watchlist-ul">
+                    <li class="watchlist-item" data-sym="RELIANCE.NS">RELIANCE</li>
+                    <li class="watchlist-item" data-sym="TCS.NS">TCS</li>
+                    <li class="watchlist-item" data-sym="HDFCBANK.NS">HDFCBANK</li>
+                    <li class="watchlist-item" data-sym="INFY.NS">INFY</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- VIEW 1: Market Overview with Hero Search -->
+            <div id="view-overview" class="view-container">
+                
+                <div class="hero-section">
+                    <h1 class="hero-title">Universal AI Market Predictor</h1>
+                    <p class="hero-subtitle">Search any NSE stock to generate real-time AI predictions and fundamental analysis.</p>
+                    
+                    <div class="hero-search-container">
+                        <input type="text" id="symbol-input" placeholder="Search NSE Company (e.g. TCS, RELIANCE, ZOMATO)" autocomplete="off">
+                        <button id="search-btn">Analyze Stock</button>
+                        <div id="search-dropdown" class="autocomplete-dropdown hidden"></div>
+                    </div>
+                </div>
+
+                <div class="overview-section">
+                    <h2>Top Market Movers</h2>
+                    <div class="overview-grid" id="market-overview-grid">
+                        <div class="loading-text">Loading Market Data...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: Stock Detail -->
+            <div id="view-detail" class="view-container hidden">
+                <button id="back-btn" class="back-btn">← Back to Dashboard</button>
+                
+                <div class="top-dashboard">
+                    <div class="left-col">
+                        <div class="panel-3d company-info-card">
+                            <h2 id="company-name">Loading...</h2>
+                            <div class="info-meta">
+                                <span class="badge" id="company-sector">Sector</span>
+                                <span class="badge ticker-badge" id="company-symbol">NSE</span>
+                            </div>
+                            <div class="current-price-huge">
+                                <span class="currency">₹</span>
+                                <span id="current-price-val">--</span>
+                                <span id="price-change-val" class="price-change">(--%)</span>
+                            </div>
+                            <p class="live-indicator"><span class="pulse"></span> Live Market Auto-Refresh</p>
+                        </div>
+                        
+                        <!-- AI RECOMMENDATION ENGINE -->
+                        <div class="panel-3d recommendation-card" id="ai-rec-card">
+                            <h3>AI Consensus</h3>
+                            <div class="rec-badge" id="rec-badge">CALCULATING</div>
+                            <p class="rec-subtext">Based on average of RNN, LSTM, GRU</p>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="panel-3d chart-container">
+                            <div class="chart-header">
+                                <div class="timeframe-filters" id="timeframe-filters">
+                                    <button data-tf="1d" class="active">1D</button>
+                                    <button data-tf="1w">1W</button>
+                                    <button data-tf="1m">1M</button>
+                                    <button data-tf="3m">3M</button>
+                                    <button data-tf="6m">6M</button>
+                                    <button data-tf="1y">1Y</button>
+                                </div>
+                            </div>
+                            <canvas id="stockChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Bar -->
+                <div class="panel-3d performance-bar">
+                    <h3>Today's Performance</h3>
+                    <div class="perf-stats">
+                        <div class="stat-item"><span>Open</span><strong id="stat-open">--</strong></div>
+                        <div class="stat-item"><span>Prev Close</span><strong id="stat-prev-close">--</strong></div>
+                        <div class="stat-item"><span>Day Low</span><strong id="stat-day-low">--</strong></div>
+                        <div class="stat-item"><span>Day High</span><strong id="stat-day-high">--</strong></div>
+                        <div class="stat-item"><span>Volume</span><strong id="stat-volume">--</strong></div>
+                        <div class="stat-item"><span>Bid Price</span><strong id="stat-bid">--</strong></div>
+                        <div class="stat-item"><span>Ask Price</span><strong id="stat-ask">--</strong></div>
+                    </div>
+                </div>
+
+                <div class="predictions-grid">
+                    <div class="panel-3d prediction-card">
+                        <div class="card-header"><h2>RNN</h2><span class="badge">Simple Recurrent</span></div>
+                        <div class="price-display"><span class="currency">₹</span><span class="value" id="rnn-pred">--</span></div>
+                    </div>
+                    <div class="panel-3d prediction-card highlight">
+                        <div class="card-header"><h2>LSTM</h2><span class="badge">Long Short-Term</span></div>
+                        <div class="price-display"><span class="currency">₹</span><span class="value" id="lstm-pred">--</span></div>
+                    </div>
+                    <div class="panel-3d prediction-card">
+                        <div class="card-header"><h2>GRU</h2><span class="badge">Gated Recurrent</span></div>
+                        <div class="price-display"><span class="currency">₹</span><span class="value" id="gru-pred">--</span></div>
+                    </div>
+                </div>
+
+                <!-- Fundamentals -->
+                <div class="fundamentals-section">
+                    <div class="panel-3d fundamentals-card">
+                        <h3>Fundamentals <span class="info-icon" title="Click terms to learn more">ℹ️</span></h3>
+                        <div class="fund-grid">
+                            <div class="fund-item"><span class="glossary-term" data-term="marketCap">Market Cap</span><strong id="fund-mcap">--</strong></div>
+                            <div class="fund-item"><span class="glossary-term" data-term="pe">P/E Ratio</span><strong id="fund-pe">--</strong></div>
+                            <div class="fund-item"><span class="glossary-term" data-term="pb">P/B Ratio</span><strong id="fund-pb">--</strong></div>
+                            <div class="fund-item"><span class="glossary-term" data-term="roe">ROE</span><strong id="fund-roe">--</strong></div>
+                            <div class="fund-item"><span class="glossary-term" data-term="debtToEquity">Debt to Equity</span><strong id="fund-dte">--</strong></div>
+                            <div class="fund-item"><span class="glossary-term" data-term="bookValue">Book Value</span><strong id="fund-bv">--</strong></div>
+                            <div class="fund-item"><span class="glossary-term" data-term="divYield">Dividend Yield</span><strong id="fund-dy">--</strong></div>
+                            <div class="fund-item"><span class="glossary-term" data-term="fiftyTwoWeekHigh">52W High</span><strong id="fund-52h">--</strong></div>
+                            <div class="fund-item"><span class="glossary-term" data-term="fiftyTwoWeekLow">52W Low</span><strong id="fund-52l">--</strong></div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-3d financials-card">
+                        <h3>Financials (Revenue vs Net Income)</h3>
+                        <div class="financials-container" id="financials-container">
+                            Loading...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Glossary Modal -->
+    <div id="glossary-modal" class="modal hidden">
+        <div class="modal-content panel-3d">
+            <span class="close-modal">&times;</span>
+            <h2 id="glossary-title">Term</h2>
+            <p id="glossary-desc">Description goes here.</p>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <h2>Analyzing Market Data...</h2>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
