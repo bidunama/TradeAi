@@ -2,8 +2,9 @@
 
 TradeAI Pro is a modern, high-performance financial terminal and AI recommendation engine designed specifically for analyzing the Indian Stock Market (NSE/BSE). It features a beautiful, responsive "Glassmorphism" UI, real-time market data, and a suite of Deep Learning models (RNN, LSTM, GRU) that instantly analyze and predict price movements for *any* listed stock.
 
-# some Screenshot 
+# some Screenshot --
 <img width="1437" height="824" alt="Screenshot 2026-05-06 at 3 29 54 PM" src="https://github.com/user-attachments/assets/4b052b6e-4079-4a6a-a22c-05bbbd66f43a" />
+<img width="1438" height="843" alt="Screenshot 2026-05-06 at 3 29 30 PM" src="https://github.com/user-attachments/assets/fce9ff73-bf4a-41a5-b831-9935adcbae12" />
 
 
 ## Features
