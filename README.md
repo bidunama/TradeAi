@@ -61,6 +61,22 @@ TradeAI Pro is a modern, high-performance financial terminal and AI recommendati
 6. **Open the Application**
    Open your web browser and navigate to: `http://localhost:8000`
 
+## ☁️ Free Cloud Deployment (Hugging Face)
+
+Because this application uses heavy Machine Learning libraries like TensorFlow, standard free tiers (like Vercel or Render) will crash due to low RAM (512MB limits).
+
+**Hugging Face Spaces** provides a completely free tier with **16GB of RAM**, which is perfect for this app!
+
+1. Create a free account on [Hugging Face](https://huggingface.co/).
+2. Click **New Space** in your profile.
+3. Name your space (e.g. `TradeAI-Pro`).
+4. For the **License**, choose whatever you prefer (e.g. MIT).
+5. For the **Space SDK**, select **Docker** (Blank).
+6. Under Space Hardware, leave it as the free **CPU basic (16GB)** tier.
+7. Click **Create Space**.
+8. Connect your GitHub repository to your Hugging Face Space, or clone the Space repository and push your code (including the provided `Dockerfile`) to it.
+9. Hugging Face will automatically read the `Dockerfile`, build your TensorFlow environment, and host your app for free!
+
 ## 📂 Project Structure
 
 ```
