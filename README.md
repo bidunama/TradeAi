@@ -7,6 +7,10 @@ TradeAI Pro is a modern, high-performance financial terminal and AI recommendati
 <img width="1438" height="843" alt="Screenshot 2026-05-06 at 3 29 30 PM" src="https://github.com/user-attachments/assets/fce9ff73-bf4a-41a5-b831-9935adcbae12" />
 
 
+## Live Demo of TradAi website
+https://amansir-tradeai-pro.hf.space
+
+
 ## Features
 
 - **Universal AI Prediction Engine:** Leverages TensorFlow/Keras deep learning models (RNN, LSTM, GRU) to predict price movements on-the-fly for any requested ticker without requiring individual retraining.
