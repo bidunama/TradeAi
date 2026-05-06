@@ -2,7 +2,7 @@
 
 TradeAI Pro is a modern, high-performance financial terminal and AI recommendation engine designed specifically for analyzing the Indian Stock Market (NSE/BSE). It features a beautiful, responsive "Glassmorphism" UI, real-time market data, and a suite of Deep Learning models (RNN, LSTM, GRU) that instantly analyze and predict price movements for *any* listed stock.
 
-## 🚀 Features
+## Features
 
 - **Universal AI Prediction Engine:** Leverages TensorFlow/Keras deep learning models (RNN, LSTM, GRU) to predict price movements on-the-fly for any requested ticker without requiring individual retraining.
 - **Real-Time Data & Charting:** Integrates directly with Yahoo Finance (`yfinance`) to pull live stock data, bid/ask spreads, and volume, displayed on a responsive Chart.js interface.
@@ -18,7 +18,7 @@ TradeAI Pro is a modern, high-performance financial terminal and AI recommendati
 - **Data Source:** Yahoo Finance API (`yfinance`, `requests`)
 - **Frontend:** HTML5, CSS3 (Vanilla), JavaScript, Chart.js
 
-## 💻 Installation & Setup
+##  Installation & Setup
 
 1. **Clone the repository**
    ```bash
@@ -77,5 +77,5 @@ tradeai-pro/
     └── script.js           # Client-side logic and chart rendering
 ```
 
-## ⚠️ Disclaimer
+##  Disclaimer
 *This project is for educational purposes only. The AI predictions are based on historical trailing data and pattern recognition. Do not use this application to make real-world financial or investment decisions.*
